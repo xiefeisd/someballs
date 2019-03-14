@@ -1,15 +1,31 @@
-# learngit
+# someballs
 
-官网 → https://www.liaoxuefeng.com
+演示→ http://sample.aisheji.tech/someballs
 
-Git教程 → http://t.cn/zQ6LFwE
 
-此仓库用于测试Pull Request，推送请使用UTF-8编码。
+功能：
 
-推送格式：
+someballs.js用于模拟星球之间的万有引力，以及相对运动。
 
-1. 按日期放入文件夹；(. Put in a folder by date)
+ballsgame.js调用someballs的模拟结果，对数据进行可视化。
 
-2. 使用英文文件名；(Use English file name)
+ballsgame.js使用了three.js，但是someballs.js并不依赖于three.js，用babylon.js也可以。
 
-3. 扩展名为`.txt`或`.md`。(Refer .txt and .md)
+是否考虑碰撞是可选的，但是要消耗较多的计算时间，默认没有开启。
+
+即使开启碰撞函数，发生碰撞以后，也只是较小的那颗消失，并不能发生相互弹开或者相互合并这样的事，也许你可以完成这些。
+
+
+为什么做：
+
+我本来只想模拟一下三体的运动，过程中发现需要一个万有引力的模拟引擎，感觉不是很复杂，就动手写了一个。
+
+理论上它可以模拟任意多星球的相互运动，远远不止3颗，事实上，我把它做成过微信小游戏，用代码自动添加了几千颗星球，直到手机跑不动为止。
+
+至于三体，我后来没有去模拟它，而是模拟了太阳系。你可以试试模拟三体。
+
+可以通过设置每颗星球的初始状态（质量、位置、速度），来开启模拟。内置了太阳和八大行星的数据。
+
+ballsgame.js包含几个函数，用来向someballs自动添加星球，当添加的星球的参数合适时，它们在太阳的引力下会形成漂亮的图案。
+
+
