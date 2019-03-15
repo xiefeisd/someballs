@@ -217,7 +217,7 @@
       var vector = new Vector2(this.x, this.y);
       var ang = vector.angle();
       return ang;
-    }
+    };
 
 		toString() {
 			return '( ' + this.x.toFixed(3) + ' , ' + this.y.toFixed(3) + ' , ' + this.z.toFixed(3) + ' )';
@@ -320,7 +320,7 @@
       this.gravityConstant = gravityConstant || 6.67 * 10 ** -11;
       this.timeStepLength = timeStepLength || 1;
       this.particles  = particles || null;
-    }
+    };
 
 		//运行一步
 		runStep (log){
@@ -347,7 +347,7 @@
 				newData[key] = datum;
 			}
 			this.updateParticlesData(newData, log);
-		}
+		};
 
 		//更新数据
 		updateParticlesData(data, log) {
@@ -360,14 +360,14 @@
 					}					
 				}
 			}
-		}
+		};
 
 		//运行
 		run (stepCount, log) {
 			for(var i=0; i<stepCount; i++) {
 				this.runStep(log);
 			}
-		}
+		};
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//数据存取
@@ -378,19 +378,19 @@
 			if(!this.particles[key]){
 				this.particles[key] = particle;
 			}
-		}
+		};
 
 		//强制添加一个质点，已存在则覆盖
 		addParticleByCover(key, particle) {
 			this.particles[key] = particle;
-		}
+		};
 
     //移除一个质点
     removeParticle(key){
       if(this.getKeys().indexOf(key) > 0){
         delete this.particles[key];
       }
-    }
+    };
 
 		//添加质点
 		addParticles(particles) {
@@ -398,7 +398,7 @@
 				var particle = particles[key];
 				this.addParticle(key, particle);
 			}
-		}
+		};
 
 		//添加质点，已存在则覆盖
 		addParticlesByCover(particles) {
@@ -406,28 +406,28 @@
 				var particle = particles[key];
 				this.addParticleByCover(key, particle);
 			}
-		}
+		};
 
 		//设置particles的初始数据
 		setParticles (particles) {
 			this.particles = {};
 			this.addParticles(particles);
-		}
+		};
 
 		//设置万有引力常数
 		setGravityConstant(gravityConstant){
 			this.gravityConstant = gravityConstant;
-		}
+		};
 
 		//设置时间步长常数
 		setTimeStepLength(timeStepLength){
 			this.timeStepLength = timeStepLength;
-		}
+		};
 
 		//设置master
 		setMaster(master){
 			this.master = master;
-		}
+		};
 
 		//把数据添加到数组
 		pushDataIntoArray(){
@@ -435,7 +435,7 @@
 				var particle = this.particles[key];
 				particle.pushDataIntoArray();
 			}
-		}
+		};
 
 		//把数据从数组中取出
 		pullDataFromArray(){
@@ -443,7 +443,7 @@
 				var particle = this.particles[key];
 				particle.pullDataFromArray();
 			}
-		}
+		};
 
 		//获取位置标量最大的键
 		getMaxPositionScalarKey() {
@@ -458,7 +458,7 @@
 				}
 			}
 			return maxKey;
-		}
+		};
 
 		//获取最大位置标量
 		getMaxPositionScalar() {
@@ -466,7 +466,7 @@
 			var particle = this.particles[key];
 			var scalar = particle.getPositionScalar();
 			return scalar;
-		}
+		};
 
 		//获取最大速度标量的键
 		getMaxVelocityScalarKey() {
@@ -481,7 +481,7 @@
 				}
 			}
 			return maxKey;
-		}
+		};
 
 		//获取最大速度标量
 		getMaxVelocityScalar() {
@@ -489,7 +489,7 @@
 			var particle = this.particles[key];
 			var scalar = particle.getVelocityScalar();
 			return scalar;
-		}
+		};
 
 		//获取全部位置上最大位置标量的键
 		getMaxPositionScalarKeyAtAll() {
@@ -504,7 +504,7 @@
 				}
 			}
 			return maxKey;
-		}
+		};
 
 		//获取全部位置上最大位置标量
 		getMaxPositionScalarAtAll() {
@@ -512,7 +512,7 @@
 			var particle = this.particles[key];
 			var scalar = particle.getMaxPositionScalar();
 			return scalar;
-		}
+		};
 
 		//获取全部位置上最大速度标量的键
 		getMaxVelocityScalarKeyAtAll() {
@@ -527,7 +527,7 @@
 				}
 			}
 			return maxKey;
-		}
+		};
 
 		//获取全部位置上最大速度标量
 		getMaxVelocityScalarAtAll() {
@@ -535,7 +535,7 @@
 			var particle = this.particles[key];
 			var scalar = particle.getMaxVelocityScalar();
 			return scalar;
-		}
+		};
 
 		//获取最大质量的键
 		getMaxMassKey() {
@@ -550,7 +550,7 @@
 				}
 			}
 			return maxKey;
-		}
+		};
 
 		//获取最大质量
 		getMaxMass() {
@@ -558,7 +558,7 @@
 			var particle = this.particles[key];
 			var scalar = particle.mass;
 			return scalar;
-		}
+		};
 
 		//获取所有key
 		getKeys(){
@@ -567,7 +567,7 @@
 				list.push(key);
 			}
 			return list;
-		}
+		};
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		//动力计算
@@ -576,18 +576,18 @@
 		//计算距离
 		getDistance (vec1, vec2) {
 			return vec1.subtract(vec2).length();
-		}
+		};
 
 		//计算距离向量
 		getDistanceVector (vec1, vec2) {
 			return vec1.subtract(vec2);
-		}
+		};
 
 		//计算引力
 		getGravityForceScalar (mass1, mass2, distance) {
 			var gravityForce = this.gravityConstant * mass1 * mass2 / distance ** 2;
 			return gravityForce;
-		}
+		};
 
 		//引力向量
 		getGravityForceOnParticle1ByParticle2 (particle1mass, particle2mass, particle1Position, particle2Position) {
@@ -595,7 +595,7 @@
 			var gravityForceScalar = this.getGravityForceScalar(particle1mass, particle2mass, distance);
 			var gravityForceVector = particle2Position.subtract(particle1Position).normalize().multiplyScalar(gravityForceScalar);
 			return gravityForceVector;
-		}
+		};
 		
 		//总引力
 		getTotalGravityForce (Key) {
@@ -613,26 +613,26 @@
 				}
 			}
 			return total;
-		}
+		};
 
 		//加速度
 		getAcceleration (mass, gravityForce) {
 			var accelerateSpeed = gravityForce.multiplyScalar(1/mass);
 			return accelerateSpeed;
-		}
+		};
 
 		//速度增量
 		getVelocityIncrement (acceleration) {
 			var increment = acceleration.multiplyScalar( this.timeStepLength );			
 			return increment;
-		}
+		};
 
 		//新速度
 		getNewVelocity (lastVelocity, acceleration) {
 			var increment = this.getVelocityIncrement(acceleration);
 			var velocity = lastVelocity.add(increment);
 			return velocity;
-		}
+		};
 
 		//平均速度
 		getAverageVelocity (lastVelocity, newVelocity) {
@@ -640,14 +640,14 @@
 			var direction = lastVelocity.add(newVelocity).normalize();
 			var velocity = direction.multiplyScalar(size);
 			return velocity;
-		}
+		};
 
 		//新位置
 		getNewPosition (lastPosition, velocity) {
 			var positionIncrement = velocity.multiplyScalar( this.timeStepLength );
 			var position = lastPosition.add(positionIncrement);
 			return position;
-		}
+		};
 		
 		//动量修正
 		correctMomentum(){
@@ -664,7 +664,7 @@
 				}
 			}
 			target.velocity = totalMomentum.reverse().multiplyScalar(1 / target.mass);
-		}
+		};
 	}
 
 	/**
@@ -707,14 +707,14 @@
 			var meshRadius = this.mesh.geometry.parameters.radius;
 			var scale = this.showRadius / meshRadius;
 			this.mesh.scale.set(scale, scale, scale);
-		}
+		};
 
 		//把轴倾角应用到mesh，模拟自转轴倾角
 		apllyAxisAngleToMesh(){
 			if(this.mesh && this.axisAngle){
 				this.mesh.rotation.x = axisAngle;
 			}
-		}
+		};
 
 		//把旋转应用到mesh，模拟星球自转
 		apllyRotationToMesh(timeLength){
@@ -727,7 +727,7 @@
 			}
 			var rotation = angleVelocity * time + angleOffset;
 			this.mesh.rotation.y = rotation;
-		}
+		};
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //动力计算
@@ -736,23 +736,23 @@
     //获取其它ball相对当前ball的位置
     getRelativePosition(ball) {
       return ball.position.subtract(this.position);
-    }
+    };
 
     //获取其它ball相对当前ball的距离
     getRelativeDistance(ball) {
       return this.getRelativePosition(ball).length();
-    }
+    };
 
     //获取其它ball相对当前ball的方向
     getRelativeDirection(ball) {
       return this.getRelativePosition(ball).normalize();
-    }
+    };
 
     //计算引力大小
     calculateGravityForceScalar(mass1, mass2, distance, gravityConstant) {
       var gravityForce = gravityConstant * mass1 * mass2 / distance ** 2;
       return gravityForce;
-    }
+    };
 
     //获取其它ball对当前ball的引力
     getRelativeGravityForce(ball, gravityConstant){
@@ -761,7 +761,7 @@
       var relativePosition = this.getRelativePosition(ball);
       var gravityForce = relativePosition.normalize().multiplyScalar(gravityForceScalar);
       return gravityForce;
-    }
+    };
 
     //计算所有其他ball与当前ball的相互作用
     calculateInteractions(balls, gravityConstant) {
@@ -785,7 +785,7 @@
       }
       //console.log("calculateInteractions2", this.key, this.keys);
       return this.interactions;
-    }
+    };
 
     //把其它ball按排序
     sortOtherBalls(property, option){
@@ -805,17 +805,17 @@
         }
       }
       return this.keys;
-    }
+    };
 
     //把其它ball按距离升序排序
     sortOtherBallsByDistanceAsc() {
       return this.sortOtherBalls("distance", "asc");
-    }
+    };
 
     //把其它ball按引力降序排序
     sortOtherBallsByForceDes() {
       return this.sortOtherBalls("force", "des");
-    }
+    };
 
     //检测碰撞
     testCollision() {
@@ -827,7 +827,7 @@
       if (radius1 + radius2 >= distance) {
         this.collision = key;
       }
-    }
+    };
 
     //检测主星
     testMaster(balls) {
@@ -844,7 +844,7 @@
         this.master = masterKey;
         balls[masterKey].hasSecondary = true;
       }
-    }
+    };
 
     //获取总引力
     getTotalGravityForce() {
@@ -854,7 +854,7 @@
         total = total.add(interaction.gravityForce);
       }
       return total;
-    }
+    };
 
     //计算新属性
     calculateNewProperties(timeStepLength){      
@@ -880,7 +880,7 @@
       return {"position": position, "velocity": velocity};
       //this.velocity = velocity;
       //this.position = position;
-    }
+    };
 
     //综合计算
     calculate(balls, gravityConstant, timeStepLength){
@@ -889,7 +889,7 @@
       this.testMaster(balls);
       var newProperties = this.calculateNewProperties(timeStepLength);
       return newProperties;
-    }
+    };
 
 	}
 
@@ -970,11 +970,11 @@
       }
       this.updateParticlesData(newData, log);
       this.fitForShow();
-    }
+    };
 
     removeBall(key){
       this.removeParticle(key);
-    }
+    };
 
 		//设置balls的初始数据
 		setBalls (balls) {
@@ -982,7 +982,7 @@
 			this.master = this.getMaxMassKey();
       this.initializeBalls();
 			this.setParametersForShow();
-		}
+		};
 
 		//设置可视化参数
 		setParametersForShow(){
@@ -1030,16 +1030,16 @@
 			//轨道宽度
 			this.showOrbitWidth = this.canvasSize / 2 / ( this.showOrbitCount + 1 ); 
 
-		}
+		};
 
 		getBalls(){
 			return this.particles;
-		}
+		};
 
 		//判断星体性质
 		isMaster(key){
 			return this.master == key;
-		}
+		};
 		isPlanet(key){      
       if (!this.getMaster(key)){
         this.particles[key].master = this.master;
@@ -1055,16 +1055,16 @@
           return true;
         }
       }
-		}
+		};
 		isSecondary(key){
 			return !this.isMaster(key) && !this.isPlanet(key);
-		}
+		};
 		getMaster(key){
 			return this.particles[key].master;
-		}
+		};
 		hasSecondary(key){
 			return this.particles[key].hasSecondary;
-		}
+		};
 
 		//获取位置标量最小的键，不包括master和用户创建的星
 		getMinPositionScalarKeyWithoutMasterWithoutUser() {
@@ -1087,7 +1087,7 @@
 				}
 			}
 			return Key;
-		}
+		};
 
 		//获取位置标量最大的键，不包括master和用户创建的星
 		getMaxPositionScalarKeyWithoutMasterWithoutUser() {
@@ -1106,14 +1106,14 @@
 				}
 			}
 			return Key;
-		}
+		};
 
 		//根据key获取位置标量
 		getPositionScalarByKey(key) {
 			var particle = this.particles[key];
 			var scalar = particle.getPositionScalar();
 			return scalar;
-		}
+		};
 
 		//获取半径最小的键，不包括master和用户创建的星
 		getMinRadiusKeyWithoutMasterWithoutUser() {
@@ -1136,7 +1136,7 @@
 				}
 			}
 			return Key;
-		}
+		};
 
 		//获取半径最大的键，不包括master和用户创建的星
 		getMaxRadiusKeyWithoutMasterWithoutUser() {
@@ -1155,14 +1155,14 @@
 				}
 			}
 			return Key;
-		}
+		};
 
 		//根据key获取半径
 		getRadiusByKey(key) {
 			var particle = this.particles[key];
 			var scalar = particle.radius;
 			return scalar;
-		}
+		};
 
 		//获取排除master和用户创建的星以外的行星个数
 		getCountWithoutMasterWithoutUser() {
@@ -1178,7 +1178,7 @@
 				}
 			}
 			return value;
-		}
+		};
 
 		//获取一般可视化轨道位置
 		getGeneralShowOrbitPosition(vector){
@@ -1190,7 +1190,7 @@
 			var showLength = Math.max( 0, calculatedLength );
 			var showPosition = direction.multiplyScalar(showLength);
 			return showPosition;
-		}
+		};
 
 		//获取一般可视化球半径
 		getGeneralShowBallRadius(decimal){
@@ -1199,7 +1199,7 @@
 			var calculated = offseted *  this.showBallRadiusRatio;
 			var modified = Math.max( 1, calculated );
 			return modified;
-		}
+		};
 
 		//获取压缩的可视化半径
 		getCompressedShowBallRadius(decimal){
@@ -1207,7 +1207,7 @@
 			var compressed = general * this.showOrbitWidth / this.canvasSize ;
 			compressed = Math.max( 1, compressed );
 			return compressed;
-		}
+		};
 
 		//获取行星的可视化位置
 		getPlanetShowPosition(key){
@@ -1215,7 +1215,7 @@
 			var position = planet.position;
 			var showPosition = this.getGeneralShowOrbitPosition(position);
 			return showPosition;
-		}
+		};
 
 		//获取行星的可视化半径
 		getPlanetShowRadius(key){
@@ -1223,28 +1223,28 @@
 			var radius = planet.radius;
 			var showRadius = this.getGeneralShowBallRadius(radius);
 			return showRadius;
-		}
+		};
 
 		//获取行星的压缩的可视化半径
 		getPlanetCompressedShowRadius(key){
 			var generalShowRadius = this.getPlanetShowRadius(key);
 			var compressedSowRadius = this.getCompressedShowBallRadius(generalShowRadius);
 			return compressedSowRadius;
-		}
+		};
 
 		//获取恒星的可视化位置
 		getMasterShowPosition(){
 			var key = this.master;
 			var showPosition = this.getPlanetShowPosition(key);
 			return showPosition;
-		}
+		};
 
 		//获取恒星的可视化半径
 		getMasterShowRadius(){
 			var key = this.master;
 			var showRadius = this.getPlanetShowRadius(key);
 			return showRadius;
-		}
+		};
 
 		//获取卫星的可视化位置
 		getSecondaryShowPosition(key){
@@ -1271,14 +1271,14 @@
 			//可视化位置
 			var showPosition = masterShowPosition.add(showRelativePosition);
 			return showPosition;
-		}
+		};
 
 		//获取卫星的可视化半径
 		getSecondaryShowRadius(key){
 			var generalShowRadius = this.getPlanetShowRadius(key);			
 			var compressedSowRadius = this.getCompressedShowBallRadius(generalShowRadius);
 			return compressedSowRadius;
-		}
+		};
 
 		//可视化适配
 		fitForShow(){
@@ -1305,7 +1305,7 @@
 				//this.particles[key].apllyAxisAngleToMesh();
 				//this.particles[key].apllyRotationToMesh(this.timeStepLength);
 			}
-		}
+		};
 
 		//初始化balls
     initializeBalls (){
@@ -1316,12 +1316,12 @@
         ball.testCollision();
         ball.testMaster(this.particles); 
 			}
-		}
+		};
 
     //添加球
     addBall(key, ball){
       this.addParticle(key, ball);
-    }
+    };
 
     //添加用户球
     addUserBall(ball){
@@ -1332,7 +1332,7 @@
       //添加
       ball.key = key;
       this.addBall(key, ball);
-    }
+    };
 
 
     //生成用户球，根据屏幕坐标
@@ -1355,7 +1355,7 @@
       var data = { "position": positionOnScreen, "velocity": velocityOnScreen, "presstime": createTime };
       var ball = this.generateUserBallByScreenVector(data);      
       return ball;     
-    }
+    };
 
 
     //生成用户球，根据屏幕向量
@@ -1428,7 +1428,7 @@
       ball.user = true;
       //console.log("generateUserBallByScreenVector", ball);
       return ball;
-    }
+    };
 
   }
 
@@ -1440,30 +1440,28 @@
 
 	class Balls{
 		constructor(){
-			//什么都不做
-		}
-
-		sunAndHisChildren = {
-			"sun": {"mass": 1.9891*10**30, "diameter": 1.392*10**9, "orbitRdius": 0, "velocity": 0, "orbitAngleOffset": 0, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0xffff00},
-			//水
-			"mercury": {"mass": 3.3022*10**23, "diameter": 4.878*10**6, "orbitRdius": 5.79091*10**10, "velocity": 47870, "orbitAngleOffset": Math.PI/4, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0x00ff00},
-			//金
-			"venus": {"mass": 4.869*10**24, "diameter": 1.21036*10**7, "orbitRdius": 1.0820893*10**11, "velocity": 35030, "orbitAngleOffset": Math.PI*3/4, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0xffff00},
-			//地
-			"earth": {"mass": 5.965*10**24, "diameter": 1.2756*10**7 , "orbitRdius": 1.495978707*10**11, "velocity": 29800, "orbitAngleOffset": 0, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0x0033ff},
-			//火
-			"mars": {"mass": 6.4219*10**23, "diameter": 6.794*10**6 , "orbitRdius": 2.27925*10**11, "velocity": 24130, "orbitAngleOffset": Math.PI*7/4, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0xff0000},
-			//木
-			"jupiter": {"mass": 1.90*10**27, "diameter": 1.42984*10**8 , "orbitRdius": 7.785472*10**11, "velocity": 13070, "orbitAngleOffset": Math.PI/2, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0xcc9900},
-			//土
-			"saturn": {"mass": 5.6846*10**26, "diameter": 1.2054*10**8 , "orbitRdius": 1.43344937*10**12, "velocity": 9690, "orbitAngleOffset": Math.PI, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0x009966},
-			//天王
-			"uranus": {"mass": 8.6810*10**25, "diameter": 5.1118*10**7 , "orbitRdius": 2.876679082*10**12, "velocity": 6810, "orbitAngleOffset": Math.PI*3/2, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0x66ff00},
-			//海王
-			"neptune": {"mass": 1.0247*10**26, "diameter": 4.9532*10**7 , "orbitRdius": 4.503443661*10**12, "velocity": 5430, "orbitAngleOffset": 0, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0xff00ff},
-			//月亮
-			"moon": {"mass": 7.349*10**22, "diameter": 3.47628*10**3 , "orbitRdius":  1.495978707*10**11 + 3.84403*10**8, "velocity": 29800 + 1023, "orbitAngleOffset": 0, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0x00ff00},
-		}
+			this.sunAndHisChildren = {
+				"sun": {"mass": 1.9891*10**30, "diameter": 1.392*10**9, "orbitRdius": 0, "velocity": 0, "orbitAngleOffset": 0, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0xffff00},
+				//水
+				"mercury": {"mass": 3.3022*10**23, "diameter": 4.878*10**6, "orbitRdius": 5.79091*10**10, "velocity": 47870, "orbitAngleOffset": Math.PI/4, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0x00ff00},
+				//金
+				"venus": {"mass": 4.869*10**24, "diameter": 1.21036*10**7, "orbitRdius": 1.0820893*10**11, "velocity": 35030, "orbitAngleOffset": Math.PI*3/4, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0xffff00},
+				//地
+				"earth": {"mass": 5.965*10**24, "diameter": 1.2756*10**7 , "orbitRdius": 1.495978707*10**11, "velocity": 29800, "orbitAngleOffset": 0, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0x0033ff},
+				//火
+				"mars": {"mass": 6.4219*10**23, "diameter": 6.794*10**6 , "orbitRdius": 2.27925*10**11, "velocity": 24130, "orbitAngleOffset": Math.PI*7/4, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0xff0000},
+				//木
+				"jupiter": {"mass": 1.90*10**27, "diameter": 1.42984*10**8 , "orbitRdius": 7.785472*10**11, "velocity": 13070, "orbitAngleOffset": Math.PI/2, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0xcc9900},
+				//土
+				"saturn": {"mass": 5.6846*10**26, "diameter": 1.2054*10**8 , "orbitRdius": 1.43344937*10**12, "velocity": 9690, "orbitAngleOffset": Math.PI, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0x009966},
+				//天王
+				"uranus": {"mass": 8.6810*10**25, "diameter": 5.1118*10**7 , "orbitRdius": 2.876679082*10**12, "velocity": 6810, "orbitAngleOffset": Math.PI*3/2, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0x66ff00},
+				//海王
+				"neptune": {"mass": 1.0247*10**26, "diameter": 4.9532*10**7 , "orbitRdius": 4.503443661*10**12, "velocity": 5430, "orbitAngleOffset": 0, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0xff00ff},
+				//月亮
+				"moon": {"mass": 7.349*10**22, "diameter": 3.47628*10**3 , "orbitRdius":  1.495978707*10**11 + 3.84403*10**8, "velocity": 29800 + 1023, "orbitAngleOffset": 0, "axisAngle": 0, "period": 0, "angleOffset": 0, "color": 0x00ff00},
+			};
+		};
 
 		toBalls(data){
 			var balls = {};
@@ -1491,7 +1489,7 @@
 				balls[key] = ball;
 			}
 			return balls;
-		}
+		};
 	}
 
   exports.Vector2 = Vector2;
