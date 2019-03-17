@@ -3,7 +3,7 @@
 	typeof define === 'function' && define.amd ? define(['exports'], factory) :
 	(global = global || self, factory(global.SOMEBALLS = {}));
 }(this, function (exports) { 'use strict';
-	//上边的头抄的three.js的，不懂啥意思
+	//上边的头抄的three.js的
 	//下边开始自己的函数定义
 
   /**

@@ -14,7 +14,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 	(typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? factory(exports) : typeof define === 'function' && define.amd ? define(['exports'], factory) : (global = global || self, factory(global.SOMEBALLS = {}));
 })(undefined, function (exports) {
 	'use strict';
-	//上边的头抄的three.js的，不懂啥意思
+	//上边的头抄的three.js的
 	//下边开始自己的函数定义
 
 	/**
