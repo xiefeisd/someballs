@@ -1,6 +1,6 @@
 # someballs
 
-演示→ http://sample.aisheji.tech/someballs
+演示→ http://webgl.aisheji.tech/someballs
 
 
 功能：
